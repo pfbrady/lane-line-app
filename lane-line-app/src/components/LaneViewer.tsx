@@ -29,24 +29,31 @@ export function LaneViewer({lane, setLane}: {lane: Lane, setLane: (l: Lane) =>
     }
 
     function toggleSwimTeam() {
-
+      lane.isSwimTeam = !(lane.isSwimTeam);
+      lane.actualSwimmers = 0; //set to zero bc assumption is everyone gets out
+      setLane(lane);
+      console.log(laneText());
     }
 
+    function 
 
 
     return(
       <Row>
         <Col>
-        <Card bg={(lane.isSwimTeam) ? 'danger' : 'success'}
-          style={{ width: '64rem' }}>
-          <Card.Body> {laneText} </Card.Body> 
-        </Card>
-        <Button>
-
-        </Button>
+          <Card 
+            bg={(lane.isSwimTeam) ? 'danger' : 'success'}
+            style={{ width: '48rem' }}
+            text={((lane.isSwimTeam) ? 'danger' : 'success').toLowerCase() === 
+            'light' ? 'dark' : 'white'}>
+            <Card.Body > {laneText()} </Card.Body> 
+          </Card>
       </Col>
       <Col>
-        <Button variant="primary" onClick={toggleSwimTeam}>
+        <Button 
+          variant="primary"
+          size='sm'
+          onClick={toggleSwimTeam}>
           Toggle Swim Team {(lane.isSwimTeam) ? 'OFF' : 'ON'}
         </Button>
       </Col>
