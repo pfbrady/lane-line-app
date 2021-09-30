@@ -1,8 +1,10 @@
-import { lane } from '../interfaces/lane';
+import { Pool } from '../interfaces/pool';
+import { Lane } from '../interfaces/lane';
 import { Col, Row, Card } from 'react-bootstrap';
 import { LaneViewer } from './LaneViewer';
 
-function PoolViewer({lane}: {lane: lane}): JSX.Element {
+export function PoolViewer({pool, setPool, setLane}: {pool: Pool, setPool: 
+    (p: Pool) => void, setLane: (l: Lane) => void}): JSX.Element {
 
     
     /**
@@ -25,14 +27,8 @@ function PoolViewer({lane}: {lane: lane}): JSX.Element {
         }
     }
     
-    if (isSummer()) {
-        return( <Col>
-          <Row>
-            <LaneViewer lane={lane}></LaneViewer>
-          </Row>
-        </Col>)
-
-    } else {
-
-    }
+    return (<Col>
+      
+    </Col>
+    )
 }

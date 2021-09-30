@@ -1,6 +1,6 @@
-import { lane } from './lane';
+import { Lane } from './lane';
 
-export interface pool {
-    lanes: lane[]
-    laneNumber: number
+export interface Pool {
+    numberOfLanes: number
+    lanes: Lane[]
 }
