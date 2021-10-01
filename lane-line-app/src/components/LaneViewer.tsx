@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
  * Creates a single pool lane and the associated color and text to generate
  * inside
  * @param lane Lane object
+ * @param setLane hook function that sets the updated lane
  *
  * @returns A JSX.Element containing a single instance of a pool lane
  */
@@ -25,13 +26,13 @@ export function LaneViewer({
    */
   function laneText(): string {
     if (lane.isSwimTeam) {
-      return "Swim Team";
+      return "Lane " + (lane.laneIndex + 1) + " | Swim Team";
     } else {
       return (
-        "Open Lap Lane | Actual Swimmers: " +
-        lane.actualSwimmers +
-        " Estimated Swimmers: " +
-        lane.estimatedSwimmers
+        "Lane " +
+        (lane.laneIndex + 1) +
+        " | Open Lap Lane | Current Swimmers: " +
+        lane.actualSwimmers
       );
     }
   }
@@ -39,13 +40,33 @@ export function LaneViewer({
   function toggleSwimTeam() {
     lane.isSwimTeam = !lane.isSwimTeam;
     lane.actualSwimmers = 0; //set to zero bc assumption is everyone gets out
-    setLane(lane);
-    console.log(laneText());
-    console.log(lane.isSwimTeam);
+    setLane({
+      laneIndex: lane.laneIndex,
+      estimatedSwimmers: lane.estimatedSwimmers,
+      actualSwimmers: lane.actualSwimmers,
+      isSwimTeam: lane.isSwimTeam,
+    });
   }
 
-  lane.isSwimTeam = !lane.isSwimTeam;
-  lane.actualSwimmers = 0;
+  function toggleCurrentSwimmersUp() {
+    lane.actualSwimmers++;
+    setLane({
+      laneIndex: lane.laneIndex,
+      estimatedSwimmers: lane.estimatedSwimmers,
+      actualSwimmers: lane.actualSwimmers,
+      isSwimTeam: lane.isSwimTeam,
+    });
+  }
+
+  function toggleCurrentSwimmersDown() {
+    lane.actualSwimmers--;
+    setLane({
+      laneIndex: lane.laneIndex,
+      estimatedSwimmers: lane.estimatedSwimmers,
+      actualSwimmers: lane.actualSwimmers,
+      isSwimTeam: lane.isSwimTeam,
+    });
+  }
 
   return (
     <Row>
@@ -63,9 +84,35 @@ export function LaneViewer({
         </Card>
       </Col>
       <Col>
-        <Button variant="primary" size="sm" onClick={() => toggleSwimTeam()}>
-          Toggle Swim Team {lane.isSwimTeam ? "OFF" : "ON"}
-        </Button>
+        <Card bg="dark">
+          <Col xs="auto">
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => toggleSwimTeam()}
+            >
+              Toggle Swim Team {lane.isSwimTeam ? "OFF" : "ON"}
+            </Button>
+          </Col>
+          <Col xs="auto">
+            <Button
+              variant="success"
+              size="sm"
+              onClick={() => toggleCurrentSwimmersUp()}
+            >
+              Add Swimmer
+            </Button>
+          </Col>
+          <Col xs="auto">
+            <Button
+              variant="danger"
+              size="sm"
+              onClick={() => toggleCurrentSwimmersDown()}
+            >
+              Remove Swimmer
+            </Button>
+          </Col>
+        </Card>
       </Col>
     </Row>
   );
