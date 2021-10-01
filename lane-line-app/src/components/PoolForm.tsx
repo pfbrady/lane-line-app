@@ -1,5 +1,13 @@
 import { Col, Row, Card, Button, Form } from "react-bootstrap";
 
+/**
+ * Creates a pool form
+ *
+ * Template taken from 'https://react-bootstrap.github.io/components/forms/'
+ *
+ *
+ * @returns A JSX.Element containing a single instance of a chemical form
+ */
 export function poolForm(): JSX.Element {
   return (
     <Form>

@@ -26,7 +26,7 @@ function App() {
           <PoolViewer pool={pool} setPool={setPool}></PoolViewer>
         </Col>
         <Col>
-          <Dashboard></Dashboard>
+          <Dashboard pool={pool}></Dashboard>
         </Col>
       </Row>
       <a href="schedule">
