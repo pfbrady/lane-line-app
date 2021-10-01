@@ -12,7 +12,6 @@ import { PoolSchedule } from "./components/PoolSchedule";
 import { Dashboard } from "./components/Dashboard";
 
 function App() {
-  const [lane, setLane] = useState<Lane>(LANES[0] as Lane);
   const [pool, setPool] = useState<Pool>({
     lanes: LANES,
     numberOfLanes: 10,
@@ -24,17 +23,12 @@ function App() {
       <PoolNavbar></PoolNavbar>
       <Row>
         <Col>
-          <PoolViewer
-            pool={pool}
-            setPool={setPool}
-            setLane={setLane}
-          ></PoolViewer>
+          <PoolViewer pool={pool} setPool={setPool}></PoolViewer>
         </Col>
         <Col>
           <Dashboard></Dashboard>
         </Col>
       </Row>
-      <LaneViewer lane={lane} setLane={setLane}></LaneViewer>
       <a href="schedule">
         <PoolSchedule></PoolSchedule>
       </a>
