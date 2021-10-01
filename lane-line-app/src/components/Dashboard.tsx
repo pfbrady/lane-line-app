@@ -3,25 +3,46 @@ import { Col, Row, Card, Button } from "react-bootstrap";
 import { Pool } from "../interfaces/pool";
 import { LaneViewer } from "./LaneViewer";
 import { Lane } from "../interfaces/lane";
+import { PoolForm } from "../interfaces/poolForm";
+import { PoolFormViewer } from "./PoolFormViewer";
 
-export function Dashboard({ pool }: { pool: Pool }): JSX.Element {
-  const [temp, setTemp] = useState(0);
-  const [totalSwimmers, setTotalSwimmers] = useState(0);
-
-  function addSwimmers() {
-    let swimmers: number = 0;
-    for (let i = 0; i > pool.numberOfLanes; i++) {
-      swimmers += pool.lanes[i].actualSwimmers;
-    }
-    setTotalSwimmers(swimmers);
-  }
-
+export function Dashboard({
+  pool,
+  poolForm,
+  setPoolForm,
+}: {
+  pool: Pool;
+  poolForm: PoolForm;
+  setPoolForm: (pf: PoolForm) => void;
+}): JSX.Element {
   return (
-    <Card>
+    <Card border="primary">
+      <Card.Title>
+        <h1>
+          <strong>Dashboard</strong>
+        </h1>
+      </Card.Title>
       <Row>
-        <Col>Total Number of Swimmers in the pool: {addSwimmers}</Col>
-        <Col>Temperature:</Col>
-        <Col>Time of last update:</Col>
+        <Card bg="dark" text="white">
+          <Col>
+            <h2>Temperature: {poolForm.temperature}</h2>
+          </Col>
+          <Col>
+            <h2>Chlorine: {poolForm.chlorine}</h2>
+          </Col>
+          <Col>
+            <h2>pH: {poolForm.ph}</h2>
+          </Col>
+          <Col>
+            <h2>Time of last update: {JSON.stringify(poolForm.time)}</h2>
+          </Col>
+        </Card>
+      </Row>
+      <Row>
+        <PoolFormViewer
+          poolForm={poolForm}
+          setPoolForm={setPoolForm}
+        ></PoolFormViewer>
       </Row>
     </Card>
   );

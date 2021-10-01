@@ -51,7 +51,7 @@ export function PoolViewer({
       setPool(pool);
     }
     return (
-      <Card bg="dark">
+      <Card bg="dark" text="white">
         <Card.Title>Western YMCA 8-Lane Pool</Card.Title>
         <LaneViewer lane={pool.lanes[0]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[1]} setLane={setLane}></LaneViewer>
@@ -71,7 +71,7 @@ export function PoolViewer({
       setPool(pool);
     }
     return (
-      <Card>
+      <Card bg="dark">
         <Card.Title>Western YMCA 10-Lane Pool</Card.Title>
         <LaneViewer lane={pool.lanes[0]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[1]} setLane={setLane}></LaneViewer>

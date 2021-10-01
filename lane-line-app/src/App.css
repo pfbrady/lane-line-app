@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Cachet";
 }
 
 .App-logo {
@@ -35,4 +36,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/**
+* css font info taken from 'https://www.onlinewebfonts.com/download/3c32aafd3b3789b47e669e046f6c51b5'
+* 
+*/
+@font-face {
+  font-family: "Cachet";
+  src: url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.eot");
+  src: url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/3c32aafd3b3789b47e669e046f6c51b5.svg#Cachet")
+      format("svg");
 }

@@ -5,4 +5,5 @@ export interface PoolForm {
     chlorine: number
     ph: number
     totalSwimmers: number
+    temperature: number
 }

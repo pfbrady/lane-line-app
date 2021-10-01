@@ -40,32 +40,20 @@ export function LaneViewer({
   function toggleSwimTeam() {
     lane.isSwimTeam = !lane.isSwimTeam;
     lane.actualSwimmers = 0; //set to zero bc assumption is everyone gets out
-    setLane({
-      laneIndex: lane.laneIndex,
-      estimatedSwimmers: lane.estimatedSwimmers,
-      actualSwimmers: lane.actualSwimmers,
-      isSwimTeam: lane.isSwimTeam,
-    });
+    setLane({ ...lane });
   }
 
   function toggleCurrentSwimmersUp() {
     lane.actualSwimmers++;
-    setLane({
-      laneIndex: lane.laneIndex,
-      estimatedSwimmers: lane.estimatedSwimmers,
-      actualSwimmers: lane.actualSwimmers,
-      isSwimTeam: lane.isSwimTeam,
-    });
+    setLane({ ...lane });
   }
 
   function toggleCurrentSwimmersDown() {
-    lane.actualSwimmers--;
-    setLane({
-      laneIndex: lane.laneIndex,
-      estimatedSwimmers: lane.estimatedSwimmers,
-      actualSwimmers: lane.actualSwimmers,
-      isSwimTeam: lane.isSwimTeam,
-    });
+    if (lane.actualSwimmers > 0) {
+      lane.actualSwimmers--;
+    } else {
+    }
+    setLane({ ...lane });
   }
 
   return (

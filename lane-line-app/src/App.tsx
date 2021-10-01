@@ -10,12 +10,22 @@ import { Pool } from "./interfaces/pool";
 import { PoolNavbar } from "./components/PoolNavbar";
 import { PoolSchedule } from "./components/PoolSchedule";
 import { Dashboard } from "./components/Dashboard";
+import { PoolForm } from "./interfaces/poolForm";
 
 function App() {
   const [pool, setPool] = useState<Pool>({
     lanes: LANES,
     numberOfLanes: 10,
   } as Pool);
+  const [poolForm, setPoolForm] = useState({
+    first: "Temp",
+    last: "Temp",
+    time: new Date(),
+    chlorine: 0,
+    ph: 0,
+    totalSwimmers: 0,
+    temperature: 0,
+  } as PoolForm);
 
   return (
     <div className="App">
@@ -26,7 +36,11 @@ function App() {
           <PoolViewer pool={pool} setPool={setPool}></PoolViewer>
         </Col>
         <Col>
-          <Dashboard pool={pool}></Dashboard>
+          <Dashboard
+            pool={pool}
+            poolForm={poolForm}
+            setPoolForm={setPoolForm}
+          ></Dashboard>
         </Col>
       </Row>
       <a href="schedule">
