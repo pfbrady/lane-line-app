@@ -5,6 +5,14 @@ import { Col, Row, Card } from "react-bootstrap";
 import { LaneViewer } from "./LaneViewer";
 import LANES from "../assets/poolDefault.json";
 
+/**
+ * Creates an entire pool and the associated lanes and buttons inside
+ *
+ * @param pool Pool object
+ * @param setPool hook function that sets the updated pool
+ *
+ * @returns A JSX.Element containing a single instance of a pool
+ */
 export function PoolViewer({
   pool,
   setPool,
@@ -40,9 +48,11 @@ export function PoolViewer({
       pool.lanes.push();
       pool.lanes.push();
       pool.numberOfLanes = pool.lanes.length;
+      setPool(pool);
     }
     return (
-      <Card>
+      <Card bg="dark">
+        <Card.Title>Western YMCA 8-Lane Pool</Card.Title>
         <LaneViewer lane={pool.lanes[0]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[1]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[2]} setLane={setLane}></LaneViewer>
@@ -58,9 +68,11 @@ export function PoolViewer({
       pool.lanes.pop();
       pool.lanes.pop();
       pool.numberOfLanes = pool.lanes.length;
+      setPool(pool);
     }
     return (
       <Card>
+        <Card.Title>Western YMCA 10-Lane Pool</Card.Title>
         <LaneViewer lane={pool.lanes[0]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[1]} setLane={setLane}></LaneViewer>
         <LaneViewer lane={pool.lanes[2]} setLane={setLane}></LaneViewer>
@@ -74,8 +86,7 @@ export function PoolViewer({
       </Card>
     );
   } else {
-    console.log(pool.numberOfLanes);
-    return <div>[Pool Render]</div>;
+    return <div>[Pool Render not loading]</div>;
   }
   /** 
    *   pool.lanes.map(

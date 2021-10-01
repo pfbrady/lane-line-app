@@ -6,7 +6,7 @@ export function PoolNavbar(): JSX.Element {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#pool">
           <img
             alt="YMCA Logo"
             src={Logo}
